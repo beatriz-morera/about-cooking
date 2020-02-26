@@ -1,0 +1,7 @@
+{
+  "name": "about-cooking",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
