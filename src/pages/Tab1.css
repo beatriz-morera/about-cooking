@@ -1,3 +1,9 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+.searchbar-search-icon.sc-ion-searchbar-ios {
+  padding-left: 5px;
+}
+.searchbar-left-aligned.sc-ion-searchbar-ios-h .searchbar-input.sc-ion-searchbar-ios {
+  padding-inline-start: 40px;
+}
