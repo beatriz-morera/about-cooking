@@ -2,7 +2,8 @@ import React from 'react';
 import { IonContent, IonHeader, IonPage, IonSearchbar } from '@ionic/react';
 import './Tab1.css';
 
-import Categories from '../components/Categories';
+import Categories from '../components/Categories/Categories';
+import Featured from '../components/Featured/Featured';
 
 const Tab1: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const Tab1: React.FC = () => {
       </IonHeader>
       <IonContent>
         <Categories />
+        <Featured />
       </IonContent>
     </IonPage>
   );

@@ -1,0 +1,13 @@
+.label {
+  margin: 15px 0 0 15px;
+  font-weight: 700;
+  font-size: 20px;
+}
+.info {
+  padding: 0 15px 20px;
+  letter-spacing: 0.5px;
+  color: #212121;
+}
+.name {
+  font-weight: 600;
+}

@@ -1,12 +1,19 @@
-import React from 'react';
-import { useCategoriesContext } from '../hooks/categories';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { selectCategories } from '../../store/selectors';
+import { loadCategories } from '../../store/features/categoriesSlice';
 
 import classes from './categories.module.css';
 
 const cardColors = ['coral', 'teal', 'turquoise', 'purple', 'tomato', 'gold', 'mediumvioletred'];
 
 const Categories: React.FC = () => {
-  const categories = useCategoriesContext();
+  const categories = useSelector(selectCategories);
+  const dispatch = useDispatch();
+
+  useEffect(() => dispatch<any>(loadCategories()), [dispatch]);
+
   return (
     <section className={classes.container}>
       <div className={classes.content}>
