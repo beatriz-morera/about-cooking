@@ -13,7 +13,7 @@ Ionic recipe finder app
 - [x] ionic components
 - [x] typescript
 - [x] react hooks
-- [x] redux
+- [x]  redux(toolkit)
 - [ ] local storage
 
 
