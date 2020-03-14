@@ -2,6 +2,7 @@
   margin: 15px 0 0 15px;
   font-weight: 700;
   font-size: 20px;
+  color: #212121;
 }
 .info {
   padding: 0 15px 20px;
@@ -10,4 +11,11 @@
 }
 .name {
   font-weight: 600;
+  color: #212121;
+}
+.iconsTagsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }

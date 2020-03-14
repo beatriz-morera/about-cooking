@@ -1,0 +1,53 @@
+.label {
+  font-weight: 700;
+  font-size: 20px;
+  color: #212121;
+  margin-top: 0;
+  padding-top: 6px;
+}
+.labelIconContainer {
+  padding: 10px 15px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.content {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 0 10px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+.card {
+  width: 130px;
+  background-color: white;
+  margin: 5px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 10px 8px 15px -18px rgba(0, 0, 0, 0.568);
+  flex: 0 0 auto;
+}
+
+.name {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  color: #212121;
+  margin: 5px 7px 10px;
+  width: 115px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

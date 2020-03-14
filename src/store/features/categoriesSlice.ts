@@ -7,6 +7,10 @@ export interface State {
   list: Category[];
 }
 
+interface RootState {
+  categories: State;
+}
+
 export const slice = createSlice<State, SliceCaseReducers<State>>({
   name: 'categories',
   initialState: {
@@ -23,7 +27,14 @@ export const selectCategories = (state: State) => state.list;
 
 export const { loaded } = slice.actions;
 
-export const loadCategories = () => (dispatch: Dispatch) =>
-  getCategories().then(res => dispatch(loaded(res)));
+export const loadCategories = () => async (dispatch: Dispatch, getState: () => RootState) => {
+  const {
+    categories: { list }
+  } = getState();
+  if (list.length === 0) {
+    const categories = await getCategories();
+    dispatch(loaded(categories));
+  }
+};
 
 export const reducer = slice.reducer;

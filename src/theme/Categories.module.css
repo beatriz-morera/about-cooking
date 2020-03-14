@@ -22,7 +22,7 @@
   height: 90px;
   margin: 5px;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: inset 0 -5px 35px -15px rgba(0, 0, 0, 0.356);
   flex: 0 0 auto;
 }
