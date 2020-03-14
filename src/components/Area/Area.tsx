@@ -31,7 +31,7 @@ const Area: React.FC<AreaProps> = ({ area }) => {
               key={recipe.idMeal}
             >
               <div className={classes.card}>
-                <img src={recipe.strMealThumb} className={classes.image} alt={recipe.strMeal} />
+                <img src={recipe.strMealThumb} alt={recipe.strMeal} />
                 <h4 className={classes.name}>{recipe.strMeal}</h4>
               </div>
             </Link>

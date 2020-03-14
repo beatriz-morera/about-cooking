@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import ReactPlayer from 'react-player';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -16,8 +16,8 @@ import {
 } from '@ionic/react';
 import { heartOutline, heartSharp } from 'ionicons/icons';
 
-import { selectRecipe, selectFavorite } from '../store/selectors';
-import { loadRecipe, toggleFavorite } from '../store/features/recipeSlice';
+import { selectRecipe } from '../store/selectors';
+import { loadRecipe } from '../store/features/recipeSlice';
 import tagsHandler from '../services/stringsFixer';
 
 import classes from './Details.module.css';
@@ -25,16 +25,11 @@ import 'react-sharingbuttons/dist/main.css';
 
 const Details: React.FC = () => {
   const recipe = useSelector(selectRecipe);
-  const favorite = useSelector(selectFavorite);
   const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch<any>(loadRecipe(id));
   }, [dispatch, id]);
-
-  const favoriteHandler = useCallback(() => {
-    dispatch(toggleFavorite(null));
-  }, [dispatch]);
 
   return (
     <IonPage>
@@ -44,11 +39,10 @@ const Details: React.FC = () => {
             <IonBackButton defaultHref="/" text="" color="secondary" />
           </IonButtons>
           <IonIcon
-            icon={favorite ? heartSharp : heartOutline}
+            icon={heartOutline}
             color="secondary"
             style={{ fontSize: '25px', marginRight: '15px' }}
             slot="end"
-            onClick={favoriteHandler}
           />
         </IonToolbar>
       </IonHeader>

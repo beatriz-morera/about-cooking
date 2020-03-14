@@ -1,5 +1,4 @@
-import React, { useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { RecipeSummary } from '../../models/recipe';
@@ -17,9 +16,6 @@ import {
 } from '@ionic/react';
 import { heartOutline, heartSharp } from 'ionicons/icons';
 
-import { selectFavorite } from '../../store/selectors';
-import { toggleFavorite } from '../../store/features/recipeSlice';
-
 import classes from './List.module.css';
 
 interface ListProps {
@@ -28,11 +24,6 @@ interface ListProps {
 }
 
 const ListRecipes: React.FC<ListProps> = ({ name, recipes }) => {
-  const favorite = useSelector(selectFavorite);
-  const dispatch = useDispatch();
-  const favoriteHandler = useCallback(() => {
-    dispatch(toggleFavorite(null));
-  }, [dispatch]);
   return (
     <IonPage>
       <IonHeader>
@@ -59,12 +50,7 @@ const ListRecipes: React.FC<ListProps> = ({ name, recipes }) => {
                 </div>
                 <div className={classes.info}>
                   <h6 className={classes.name}>{recipe.strMeal}</h6>
-                  <IonIcon
-                    icon={favorite ? heartSharp : heartOutline}
-                    color="secondary"
-                    style={{ fontSize: '25px' }}
-                    onClick={favoriteHandler}
-                  />
+                  <IonIcon icon={heartOutline} color="secondary" style={{ fontSize: '25px' }} />
                 </div>
               </IonCard>
             </Link>

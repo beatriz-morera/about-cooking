@@ -1,13 +1,12 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { IonCard, IonCardSubtitle, IonIcon } from '@ionic/react';
 import { heartOutline, heartSharp } from 'ionicons/icons';
 
-import { selectFeatured, selectFavorite } from '../../store/selectors';
+import { selectFeatured } from '../../store/selectors';
 import { loadFeatured } from '../../store/features/featuredSlice';
-import { toggleFavorite } from '../../store/features/recipeSlice';
 import Recipe from '../../models/recipe';
 import tagsHandler from '../../services/stringsFixer';
 
@@ -15,15 +14,10 @@ import classes from '../../theme/Featured.module.css';
 
 const Featured: React.FC = () => {
   const featured = useSelector(selectFeatured);
-  const favorite = useSelector(selectFavorite);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch<any>(loadFeatured());
-  }, [dispatch]);
-
-  const favoriteHandler = useCallback(() => {
-    dispatch(toggleFavorite(null));
   }, [dispatch]);
 
   return (
@@ -50,12 +44,7 @@ const Featured: React.FC = () => {
                   {recipe.strCategory} * {recipe.strArea} {tagsHandler(recipe.strTags)}
                 </IonCardSubtitle>
 
-                <IonIcon
-                  icon={favorite ? heartSharp : heartOutline}
-                  color="secondary"
-                  style={{ fontSize: '25px' }}
-                  onClick={favoriteHandler}
-                />
+                <IonIcon icon={heartOutline} color="secondary" style={{ fontSize: '25px' }} />
               </div>
             </div>
           </IonCard>
