@@ -3,6 +3,7 @@ import * as featured from './features/featuredSlice';
 import * as recipe from './features/recipeSlice';
 import * as areas from './features/areasSlice';
 import * as category from './features/categorySlice';
+import * as favorites from './features/favoritesSlice';
 
 import { State } from './store';
 
@@ -17,3 +18,5 @@ export const selectAreas = (state: State) => areas.selectAreas(state.areas);
 export const selectCategoryMap = (state: State) => category.selectCategoryMap(state.category);
 export const selectCategoryRecipes = (state: State) =>
   category.selectCategoryRecipes(state.category);
+
+export const selectFavorites = (state: State) => favorites.selectFavorites(state.favorites);

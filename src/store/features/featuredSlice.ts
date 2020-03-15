@@ -1,16 +1,16 @@
-import { createSlice, SliceCaseReducers, Dispatch } from '@reduxjs/toolkit';
+import { createSlice, SliceCaseReducers, Dispatch } from "@reduxjs/toolkit";
 
-import Recipe from '../../models/recipe';
-import { getFeatured } from '../../services/recipes';
+import { Recipe } from "../../models/recipe";
+import { getFeatured } from "../../services/recipes";
 
 export interface State {
-  recipe: Recipe[];
+  recipe: Recipe;
 }
 
 export const slice = createSlice<State, SliceCaseReducers<State>>({
-  name: 'featured',
+  name: "featured",
   initialState: {
-    recipe: []
+    recipe: null
   },
   reducers: {
     loaded: (state, action) => {

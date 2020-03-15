@@ -1,8 +1,8 @@
-import Category from '../models/category';
-import Recipe, { List, RecipeSummary } from '../models/recipe';
-import { Area } from '../models/area';
+import Category from "../models/category";
+import { List, RecipeSummary, Recipe } from "../models/recipe";
+import { Area } from "../models/area";
 
-const BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
+const BASE_URL = "https://www.themealdb.com/api/json/v1/1";
 
 function* range(from: number, count: number) {
   for (let i = from; i < from + count; i++) {
@@ -49,8 +49,10 @@ export async function getRecipeById(id: string): Promise<Recipe> {
 export async function getFeatured(): Promise<Recipe[]> {
   const url = `${BASE_URL}/random.php`;
   const rs = await fetch(url);
-  const { meals } = await rs.json();
-  return meals;
+  const {
+    meals: [meal]
+  } = await rs.json();
+  return meal;
 }
 
 //All categories
@@ -62,7 +64,9 @@ export async function getCategories(): Promise<Category[]> {
 }
 // Recipes by category
 
-export async function getRecipesByCategory(category: string): Promise<RecipeSummary[]> {
+export async function getRecipesByCategory(
+  category: string
+): Promise<RecipeSummary[]> {
   const url = `${BASE_URL}/filter.php?c=${category}`;
   const rs = await fetch(url);
   const { meals } = await rs.json();

@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
-import { selectAreas } from '../store/selectors';
-import { loadArea } from '../store/features/areasSlice';
+import { selectAreas } from "../store/selectors";
+import { loadArea } from "../store/features/areasSlice";
 
-import ListRecipes from '../components/List';
+import ListRecipes from "../components/ListRecipe";
 
 const ByAreas: React.FC = () => {
   const { id } = useParams();
@@ -19,7 +19,11 @@ const ByAreas: React.FC = () => {
 
   const area = areas.find(area => area.name === id);
 
-  return <ListRecipes recipes={area.recipes} name={area.name} />;
+  if (area) {
+    return <ListRecipes recipes={area.recipes} name={area.name} />;
+  }
+
+  return null;
 };
 
 export default ByAreas;

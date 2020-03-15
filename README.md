@@ -5,17 +5,16 @@ Ionic recipe finder app
 **pages**
 
 - [ ] search page
-- [ ] details page
-- [ ] favorites page
+- [x] details page
+- [x] favorites page
 
 **features**
 
 - [x] ionic components
 - [x] typescript
 - [x] react hooks
-- [x]  redux(toolkit)
+- [x] redux(toolkit)
 - [ ] local storage
-
 
 ## Available Scripts
 

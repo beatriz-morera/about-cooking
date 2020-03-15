@@ -1,12 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import { IonIcon } from '@ionic/react';
-import { arrowForwardSharp } from 'ionicons/icons';
+import { IonIcon } from "@ionic/react";
+import { arrowForwardSharp } from "ionicons/icons";
 
-import { List } from '../../models/recipe';
+import { List } from "../../models/recipe";
 
-import classes from './Area.module.css';
+import classes from "./Area.module.css";
 
 interface AreaProps {
   area: List;
@@ -17,8 +17,12 @@ const Area: React.FC<AreaProps> = ({ area }) => {
     <>
       <div className={classes.labelIconContainer}>
         <h5 className={classes.label}>{area.name}</h5>
-        <Link to={`/area/${area.name}`} style={{ textDecoration: 'none' }}>
-          <IonIcon icon={arrowForwardSharp} color="secondary" style={{ fontSize: '20px' }} />
+        <Link to={`/area/${area.name}`} style={{ textDecoration: "none" }}>
+          <IonIcon
+            icon={arrowForwardSharp}
+            color="secondary"
+            style={{ fontSize: "20px" }}
+          />
         </Link>
       </div>
 
@@ -27,7 +31,7 @@ const Area: React.FC<AreaProps> = ({ area }) => {
           {area.recipes.slice(0, 10).map(recipe => (
             <Link
               to={`/search/${recipe.idMeal}`}
-              style={{ textDecoration: 'none' }}
+              style={{ textDecoration: "none" }}
               key={recipe.idMeal}
             >
               <div className={classes.card}>

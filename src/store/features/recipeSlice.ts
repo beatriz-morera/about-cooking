@@ -1,14 +1,14 @@
-import { createSlice, SliceCaseReducers, Dispatch } from '@reduxjs/toolkit';
+import { createSlice, SliceCaseReducers, Dispatch } from "@reduxjs/toolkit";
 
-import Recipe from '../../models/recipe';
-import { getRecipeById } from '../../services/recipes';
+import { Recipe } from "../../models/recipe";
+import { getRecipeById } from "../../services/recipes";
 
 export interface State {
   recipe?: Recipe;
 }
 
 export const slice = createSlice<State, SliceCaseReducers<State>>({
-  name: 'recipe',
+  name: "recipe",
   initialState: {
     recipe: null
   },

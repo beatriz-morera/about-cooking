@@ -14,7 +14,7 @@ export interface Ingredient {
   measure: string;
 }
 
-export default interface Recipe extends RecipeSummary {
+export interface Recipe extends RecipeSummary {
   strCategory: string;
   strArea: string;
   strTags: string;

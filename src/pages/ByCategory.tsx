@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
-import { selectCategoryRecipes } from '../store/selectors';
-import { loadCategory } from '../store/features/categorySlice';
+import { selectCategoryRecipes } from "../store/selectors";
+import { loadCategory } from "../store/features/categorySlice";
 
-import ListRecipes from '../components/List';
+import ListRecipes from "../components/ListRecipe";
 
 const ByCategory: React.FC = () => {
   const { id } = useParams();

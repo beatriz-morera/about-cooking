@@ -6,6 +6,7 @@ import * as featured from './features/featuredSlice';
 import * as recipe from './features/recipeSlice';
 import * as areas from './features/areasSlice';
 import * as category from './features/categorySlice';
+import * as favorites from './features/favoritesSlice';
 
 export interface State {
   categories: categories.State;
@@ -13,6 +14,7 @@ export interface State {
   recipe: recipe.State;
   areas: areas.State;
   category: category.State;
+  favorites: favorites.State;
 }
 
 const enhancers = new Array<StoreEnhancer>();
@@ -27,7 +29,8 @@ export default configureStore<State>({
     featured: featured.reducer,
     recipe: recipe.reducer,
     areas: areas.reducer,
-    category: category.reducer
+    category: category.reducer,
+    favorites: favorites.reducer
   },
   enhancers
 });
