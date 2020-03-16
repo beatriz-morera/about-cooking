@@ -23,7 +23,6 @@ import { useIsFavorite } from "../hooks/favorite";
 import tagsHandler from "../services/stringsFixer";
 
 import classes from "./Details.module.css";
-import "react-sharingbuttons/dist/main.css";
 
 const Details: React.FC = () => {
   const recipe = useSelector(selectRecipe);
