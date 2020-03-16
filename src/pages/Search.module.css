@@ -1,11 +1,17 @@
 .background {
   width: 100vw;
   background: #f5f5f5;
-  padding-bottom: 30px;
+  padding: 10px 0 30px;
 }
 .label {
   margin: 15px 0 0 15px;
   font-weight: 700;
   font-size: 20px;
   color: #212121;
+}
+.buttonsContainer {
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

@@ -5,7 +5,8 @@ http://ionicframework.com/docs/theming/ */
 .searchbar-search-icon.sc-ion-searchbar-ios {
   padding-left: 5px;
 }
-.searchbar-left-aligned.sc-ion-searchbar-ios-h .searchbar-input.sc-ion-searchbar-ios {
+.searchbar-left-aligned.sc-ion-searchbar-ios-h
+  .searchbar-input.sc-ion-searchbar-ios {
   padding-inline-start: 40px;
 }
 :root {
@@ -80,6 +81,8 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-tab-bar-color-selected: var(--ion-color-secondary);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -4,7 +4,7 @@ Ionic recipe finder app
 
 **pages**
 
-- [ ] search page
+- [x] search page
 - [x] details page
 - [x] favorites page
 

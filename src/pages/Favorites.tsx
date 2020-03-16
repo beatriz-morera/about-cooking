@@ -8,41 +8,60 @@ import {
   IonContent,
   IonButtons,
   IonBackButton,
-  IonHeader
+  IonHeader,
+  IonButton,
+  IonIcon
 } from "@ionic/react";
 
 import { selectFavorites } from "../store/selectors";
+import ListRecipes from "../components/ListRecipes";
 
-import ListRecipes from "../components/ListRecipe";
 import classes from "./Favorites.module.css";
+import logo from "../assets/not-found.png";
+import { searchOutline } from "ionicons/icons";
+import { Link } from "react-router-dom";
 
 const Favorites: React.FC = () => {
   const favorites = useSelector(selectFavorites);
 
   return (
-    <>
-      {favorites.length ? (
-        <ListRecipes recipes={favorites} name={"Favorites"} />
-      ) : (
-        <IonPage>
-          <IonHeader>
-            <IonToolbar>
-              <IonButtons slot="start">
-                <IonBackButton defaultHref="/" text="" color="secondary" />
-              </IonButtons>
-              <IonTitle>Favorites</IonTitle>
-            </IonToolbar>
-          </IonHeader>
-          <IonContent>
-            <main className={classes.background}>
-              <h2 className={classes.empty}>
-                Add recipes so you can easily find them later.
-              </h2>
-            </main>
-          </IonContent>
-        </IonPage>
-      )}
-    </>
+    <IonPage>
+      <IonHeader mode="ios">
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonBackButton
+              defaultHref="/"
+              text=""
+              color="secondary"
+              mode="md"
+            />
+          </IonButtons>
+          <IonTitle>Favorites</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
+        {favorites.length ? (
+          <ListRecipes recipes={favorites} />
+        ) : (
+          <div className={classes.notFound}>
+            <img src={logo} alt="chef hat" />
+            <h3 className={classes.bolder}>NO RECIPES YET</h3>
+            <p>What would you like to cook?</p>
+            <Link to="/search">
+              <IonButton
+                shape="round"
+                color="secondary"
+                fill="outline"
+                mode="ios"
+              >
+                <IonIcon icon={searchOutline} slot="start" />
+                Search for recipes
+              </IonButton>
+            </Link>
+          </div>
+        )}
+      </IonContent>
+    </IonPage>
   );
 };
 

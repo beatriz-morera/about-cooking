@@ -41,10 +41,15 @@ const Details: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
+      <IonHeader mode="ios">
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/" text="" color="secondary" />
+            <IonBackButton
+              defaultHref="/"
+              text=""
+              color="secondary"
+              mode="md"
+            />
           </IonButtons>
           <IonIcon
             icon={activeFavorite ? heartSharp : heartOutline}
