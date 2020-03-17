@@ -14,7 +14,12 @@ Ionic recipe finder app
 - [x] typescript
 - [x] react hooks
 - [x] redux(toolkit)
-- [ ] local storage
+- [x] local storage
+
+# Demo Page
+
+You can check the project running at:
+[https://about-cooking.netlify.com/](https://about-cooking.netlify.com/)
 
 ## Available Scripts
 
