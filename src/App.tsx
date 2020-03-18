@@ -14,6 +14,8 @@ import { heartOutline, searchSharp } from "ionicons/icons";
 
 import Search from "./pages/Search";
 import Filter from "./pages/Filter";
+import Select from "./pages/Select";
+import Results from "./pages/Results";
 import ByCategory from "./pages/ByCategory";
 import ByArea from "./pages/ByArea";
 import Details from "./pages/Details";
@@ -45,6 +47,8 @@ const App: React.FC = () => (
         <IonRouterOutlet>
           <Route path="/search" component={Search} exact />
           <Route path="/filter" component={Filter} />
+          <Route path="/select" component={Select} />
+          <Route path="/results" component={Results} />
           <Route path="/search/:id" component={Details} />
           <Route path="/category/:id" component={ByCategory} />
           <Route path="/area/:id" component={ByArea} />

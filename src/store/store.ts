@@ -8,6 +8,8 @@ import * as recipes from "./features/recipesSlice";
 import * as areas from "./features/areasSlice";
 import * as category from "./features/categorySlice";
 import * as favorites from "./features/favoritesSlice";
+import * as ingredients from "./features/ingredientsSlice";
+import * as ingredient from "./features/ingredientSlice";
 
 export interface State {
   categories: categories.State;
@@ -17,6 +19,8 @@ export interface State {
   areas: areas.State;
   category: category.State;
   favorites: favorites.State;
+  ingredients: ingredients.State;
+  ingredient: ingredient.State;
 }
 
 const enhancers = new Array<StoreEnhancer>();
@@ -33,7 +37,9 @@ export default configureStore<State>({
     recipes: recipes.reducer,
     areas: areas.reducer,
     category: category.reducer,
-    favorites: favorites.reducer
+    favorites: favorites.reducer,
+    ingredients: ingredients.reducer,
+    ingredient: ingredient.reducer
   },
   enhancers
 });

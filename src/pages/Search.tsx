@@ -54,18 +54,19 @@ const Search: React.FC = () => {
                 Search for recipes
               </IonButton>
             </Link>
-
-            <IonButton
-              mode="ios"
-              color="medium"
-              fill="clear"
-              style={{
-                borderRadius: "5px",
-                border: "0.5px solid #d1d1d1"
-              }}
-            >
-              <IonIcon icon={optionsOutline} color="secondary" />
-            </IonButton>
+            <Link to="/select">
+              <IonButton
+                mode="ios"
+                color="medium"
+                fill="clear"
+                style={{
+                  borderRadius: "5px",
+                  border: "0.5px solid #d1d1d1"
+                }}
+              >
+                <IonIcon icon={optionsOutline} color="secondary" />
+              </IonButton>
+            </Link>
           </div>
         </IonToolbar>
       </IonHeader>

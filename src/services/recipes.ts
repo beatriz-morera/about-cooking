@@ -1,6 +1,7 @@
 import Category from "../models/category";
 import { List, RecipeSummary, Recipe } from "../models/recipe";
 import { Area } from "../models/area";
+import { Ingredient } from "../models/ingredient";
 
 const BASE_URL = "https://www.themealdb.com/api/json/v1/1";
 
@@ -100,4 +101,25 @@ export async function getRecipesByAreas(): Promise<List[]> {
   const recipes = await Promise.all(recipesFetch);
 
   return recipes.filter(r => r.recipes.length >= 5);
+}
+
+//Ingredients
+export async function getIngredients(): Promise<Ingredient[]> {
+  const url = `${BASE_URL}/list.php?i=list`;
+  const rs = await fetch(url);
+  const { meals } = await rs.json();
+
+  return meals.slice(0, 50).map(({ strIngredient }) => {
+    return { strIngredient, isChecked: false };
+  });
+}
+
+//Recipes by main Ingredient
+export async function getRecipesByIngredient(
+  ingredient: string
+): Promise<RecipeSummary[]> {
+  const url = `${BASE_URL}/filter.php?i=${ingredient}`;
+  const rs = await fetch(url);
+  const { meals } = await rs.json();
+  return meals;
 }

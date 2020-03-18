@@ -1,0 +1,11 @@
+.background {
+  padding-top: 2px;
+  width: 100vw;
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+.label {
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: 20px;
+}
