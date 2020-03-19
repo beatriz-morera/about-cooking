@@ -33,5 +33,8 @@ export const selectFavorites = (state: State) =>
 export const selectIngredients = (state: State) =>
   ingredients.selectIngredients(state.ingredients);
 
+export const selectSelectedIngredients = (state: State) =>
+  ingredients.selectSelectedIngredients(state.ingredients);
+
 export const selectSelectedIngredientRecipes = (state: State) =>
   ingredients.selectSelectedIngredientRecipes(state.ingredients);

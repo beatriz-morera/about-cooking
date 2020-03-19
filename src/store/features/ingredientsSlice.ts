@@ -46,15 +46,17 @@ export const slice = createSlice<State, SliceCaseReducers<State>>({
 });
 
 export const selectIngredients = (state: State) => state.list;
+export const selectSelectedIngredients = (state: State) =>
+  state.list.filter(ing => ing.isChecked);
 export const selectIngredientRecipes = (state: State) => state.recipes;
 export const selectSelectedIngredientRecipes = createSelector(
-  selectIngredients,
+  selectSelectedIngredients,
   selectIngredientRecipes,
   (ingredients, recipes) => {
     const list = [];
     ingredients
-      .filter(ing => ing.isChecked)
       .flatMap(ing => recipes[ing.strIngredient])
+      .filter(rec => rec && rec.idMeal)
       .forEach(recipe => {
         if (!list.find(r => r.idMeal === recipe.idMeal)) {
           list.push(recipe);

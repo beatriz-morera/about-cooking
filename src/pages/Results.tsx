@@ -14,7 +14,7 @@ import { searchOutline, optionsOutline, closeSharp } from "ionicons/icons";
 
 import {
   selectSelectedIngredientRecipes,
-  selectIngredients
+  selectSelectedIngredients
 } from "../store/selectors";
 import { loadIngredientsRecipes } from "../store/features/ingredientsSlice";
 
@@ -25,17 +25,15 @@ import classes from "./Results.module.css";
 const Results: React.FC = () => {
   const dispatch = useDispatch();
   const recipes = useSelector(selectSelectedIngredientRecipes);
-  const ingredients = useSelector(selectIngredients);
+  const ingredients = useSelector(selectSelectedIngredients);
 
-  const labels = useMemo(
-    () =>
-      ingredients.filter(ing => ing.isChecked).map(ing => ing.strIngredient),
-    [ingredients]
-  );
+  const labels = useMemo(() => ingredients.map(ing => ing.strIngredient), [
+    ingredients
+  ]);
 
   useEffect(() => {
-    dispatch(loadIngredientsRecipes(ingredients.map(ing => ing.strIngredient)));
-  }, [dispatch, ingredients]);
+    dispatch(loadIngredientsRecipes(labels));
+  }, [dispatch, labels]);
 
   return (
     <IonPage>
