@@ -1,9 +1,11 @@
+import pLimit from "p-limit";
 import Category from "../models/category";
 import { List, RecipeSummary, Recipe } from "../models/recipe";
 import { Area } from "../models/area";
 import { Ingredient } from "../models/ingredient";
 
 const BASE_URL = "https://www.themealdb.com/api/json/v1/1";
+const limit = pLimit(4);
 
 function* range(from: number, count: number) {
   for (let i = from; i < from + count; i++) {
@@ -15,7 +17,7 @@ function* range(from: number, count: number) {
 
 export async function getRecipeByName(name: string): Promise<[]> {
   const url = `${BASE_URL}/search.php?s=${name}`;
-  const rs = await fetch(url);
+  const rs = await limit(() => fetch(url));
   const { meals } = await rs.json();
 
   return meals;
@@ -25,7 +27,7 @@ export async function getRecipeByName(name: string): Promise<[]> {
 
 export async function getRecipeById(id: string): Promise<Recipe> {
   const url = `${BASE_URL}/lookup.php?i=${id}`;
-  const rs = await fetch(url);
+  const rs = await limit(() => fetch(url));
   const { meals } = await rs.json();
 
   const [meal] = meals.map(m => {
@@ -59,7 +61,7 @@ export async function getFeatured(): Promise<Recipe[]> {
 //All categories
 export async function getCategories(): Promise<Category[]> {
   const url = `${BASE_URL}/categories.php`;
-  const rs = await fetch(url);
+  const rs = await limit(() => fetch(url));
   const { categories } = await rs.json();
   return categories;
 }
@@ -69,7 +71,7 @@ export async function getRecipesByCategory(
   category: string
 ): Promise<RecipeSummary[]> {
   const url = `${BASE_URL}/filter.php?c=${category}`;
-  const rs = await fetch(url);
+  const rs = await limit(() => fetch(url));
   const { meals } = await rs.json();
   return meals;
 }
@@ -77,7 +79,7 @@ export async function getRecipesByCategory(
 //All areas
 export async function getAreas(): Promise<Area[]> {
   const url = `${BASE_URL}/list.php?a=list`;
-  const rs = await fetch(url);
+  const rs = await limit(() => fetch(url));
   const { meals } = await rs.json();
   return meals;
 }
@@ -85,7 +87,7 @@ export async function getAreas(): Promise<Area[]> {
 //Recipes by area
 export async function getRecipesByArea(area: string): Promise<RecipeSummary[]> {
   const url = `${BASE_URL}/filter.php?a=${area}`;
-  const rs = await fetch(url);
+  const rs = await limit(() => fetch(url));
   const { meals } = await rs.json();
   return meals;
 }
@@ -106,7 +108,7 @@ export async function getRecipesByAreas(): Promise<List[]> {
 //Ingredients
 export async function getIngredients(): Promise<Ingredient[]> {
   const url = `${BASE_URL}/list.php?i=list`;
-  const rs = await fetch(url);
+  const rs = await limit(() => fetch(url));
   const { meals } = await rs.json();
 
   return meals.slice(0, 50).map(({ strIngredient }) => {
@@ -119,7 +121,7 @@ export async function getRecipesByIngredient(
   ingredient: string
 ): Promise<RecipeSummary[]> {
   const url = `${BASE_URL}/filter.php?i=${ingredient}`;
-  const rs = await fetch(url);
+  const rs = await limit(() => fetch(url));
   const { meals } = await rs.json();
   return meals;
 }

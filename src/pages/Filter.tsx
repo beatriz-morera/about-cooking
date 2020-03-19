@@ -20,6 +20,7 @@ import ListRecipes from "../components/ListRecipes";
 
 const Filter: React.FC = () => {
   const [value, setValue] = useState("");
+  const searchTimeout = useRef<any>();
   const recipes = useSelector(selectRecipes);
   const dispatch = useDispatch();
 
@@ -29,7 +30,11 @@ const Filter: React.FC = () => {
       const name = text.trim();
       if (name.length > 0) {
         setValue(name);
-        dispatch<any>(loadRecipes(name));
+        clearTimeout(searchTimeout.current);
+        searchTimeout.current = setTimeout(
+          () => dispatch<any>(loadRecipes(name)),
+          300
+        );
       } else {
         setValue("");
       }
