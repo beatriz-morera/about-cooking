@@ -17,7 +17,7 @@ import { selectFavorites } from "../store/selectors";
 import ListRecipes from "../components/ListRecipes";
 
 import classes from "./Favorites.module.css";
-import logo from "../assets/not-found.png";
+import logo from "../assets/icon.png";
 import { searchOutline } from "ionicons/icons";
 import { Link } from "react-router-dom";
 

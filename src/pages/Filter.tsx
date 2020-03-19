@@ -12,7 +12,7 @@ import {
 } from "@ionic/react";
 
 import classes from "./Filter.module.css";
-import logo from "../assets/not-found.png";
+import logo from "../assets/icon.png";
 
 import { selectRecipes } from "../store/selectors";
 import { loadRecipes } from "../store/features/recipesSlice";
