@@ -117,7 +117,7 @@ const Details: React.FC = () => {
                   />
                 </IonCard>
               )}
-              <h5 className={classes.label}>Related Recipes</h5>
+              <h5 className={classes.label}></h5>
             </section>
           ) : null}
         </main>
