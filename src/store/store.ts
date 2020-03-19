@@ -1,5 +1,4 @@
-import { configureStore, StoreEnhancer } from "@reduxjs/toolkit";
-import persistState from "redux-localstorage";
+import { configureStore } from "@reduxjs/toolkit";
 
 import * as categories from "./features/categoriesSlice";
 import * as featured from "./features/featuredSlice";
@@ -21,12 +20,6 @@ export interface State {
   ingredients: ingredients.State;
 }
 
-const enhancers = new Array<StoreEnhancer>();
-
-if (process.env.NODE_ENV !== "development") {
-  enhancers.push(persistState() as StoreEnhancer);
-}
-
 export default configureStore<State>({
   reducer: {
     categories: categories.reducer,
@@ -37,6 +30,5 @@ export default configureStore<State>({
     category: category.reducer,
     favorites: favorites.reducer,
     ingredients: ingredients.reducer
-  },
-  enhancers
+  }
 });

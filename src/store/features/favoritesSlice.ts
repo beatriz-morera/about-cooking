@@ -10,11 +10,26 @@ export interface State {
   list: RecipeSummary[];
 }
 
+const STORAGE_KEY = "favorites";
+
+function loadInitialState(): State {
+  const json = localStorage.getItem(STORAGE_KEY);
+  if (json) {
+    return JSON.parse(json);
+  }
+  return {
+    list: []
+  };
+}
+
+function persistState(state: State) {
+  const json = JSON.stringify(state);
+  localStorage.setItem(STORAGE_KEY, json);
+}
+
 export const slice = createSlice<State, SliceCaseReducers<State>>({
   name: "favorites",
-  initialState: {
-    list: []
-  },
+  initialState: loadInitialState(),
   reducers: {
     toggleFavorite: (state: State, action: PayloadAction<RecipeSummary>) => {
       const { idMeal } = action.payload;
@@ -24,6 +39,7 @@ export const slice = createSlice<State, SliceCaseReducers<State>>({
       } else {
         state.list.push(action.payload);
       }
+      persistState(state);
     }
   }
 });
