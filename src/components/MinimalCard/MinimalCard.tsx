@@ -24,7 +24,7 @@ const MinimalCard: React.FC<MinimalCardProps> = ({ recipe }) => {
   }, [dispatch, recipe]);
 
   return (
-    <IonCard mode="ios" key={recipe.idMeal}>
+    <IonCard mode="ios">
       <div className={classes.imageContainer}>
         <Link
           to={`/search/${recipe.idMeal}`}

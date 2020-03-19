@@ -79,7 +79,12 @@ const Select: React.FC = () => {
       <IonFooter mode="ios">
         <IonToolbar>
           <Link to="/results" style={{ textDecoration: "none" }}>
-            <IonButton color="secondary" expand="full" shape="round">
+            <IonButton
+              color="secondary"
+              expand="full"
+              shape="round"
+              disabled={!ingredients.some(ing => ing.isChecked)}
+            >
               Apply
             </IonButton>
           </Link>

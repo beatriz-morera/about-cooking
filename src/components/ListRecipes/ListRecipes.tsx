@@ -10,12 +10,12 @@ interface ListProps {
   showLength?: boolean;
 }
 
-const ListRecipes: React.FC<ListProps> = ({ recipes, showLength = true }) => {
+const ListRecipes: React.FC<ListProps> = ({ recipes }) => {
   return (
     <main className={classes.background}>
-      {showLength && <p className={classes.label}>{recipes?.length} recipes</p>}
+      <p className={classes.label}>{recipes?.length} recipes</p>
       {recipes?.map(recipe => (
-        <MinimalCard recipe={recipe} key={recipe.idMeal} />
+        <MinimalCard recipe={recipe} key={recipe.strMeal} />
       ))}
     </main>
   );
