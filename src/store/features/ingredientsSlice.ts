@@ -38,6 +38,9 @@ export const slice = createSlice<State, SliceCaseReducers<State>>({
         ingredient.isChecked = !ingredient.isChecked;
       }
     },
+    clearAllChecked: state => {
+      state.list.map(ingredient => (ingredient.isChecked = false));
+    },
     ingredientLoaded: (state, action) => {
       const { ingredient, recipes } = action.payload;
       state.recipes[ingredient] = recipes;
@@ -46,8 +49,10 @@ export const slice = createSlice<State, SliceCaseReducers<State>>({
 });
 
 export const selectIngredients = (state: State) => state.list;
-export const selectSelectedIngredients = (state: State) =>
-  state.list.filter(ing => ing.isChecked);
+export const selectSelectedIngredients = createSelector(
+  selectIngredients,
+  list => list.filter(ing => ing.isChecked)
+);
 export const selectIngredientRecipes = (state: State) => state.recipes;
 export const selectSelectedIngredientRecipes = createSelector(
   selectSelectedIngredients,
@@ -66,7 +71,12 @@ export const selectSelectedIngredientRecipes = createSelector(
   }
 );
 
-export const { loaded, toggleChecked, ingredientLoaded } = slice.actions;
+export const {
+  loaded,
+  toggleChecked,
+  clearAllChecked,
+  ingredientLoaded
+} = slice.actions;
 
 export const loadIngredients = () => async (
   dispatch: Dispatch,

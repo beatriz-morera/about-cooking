@@ -1,6 +1,7 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import {
   IonContent,
@@ -16,24 +17,36 @@ import {
   selectSelectedIngredientRecipes,
   selectSelectedIngredients
 } from "../store/selectors";
-import { loadIngredientsRecipes } from "../store/features/ingredientsSlice";
+import {
+  loadIngredientsRecipes,
+  toggleChecked
+} from "../store/features/ingredientsSlice";
 
 import ListRecipes from "../components/ListRecipes";
 
 import classes from "./Results.module.css";
 
 const Results: React.FC = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
-  const recipes = useSelector(selectSelectedIngredientRecipes);
-  const ingredients = useSelector(selectSelectedIngredients);
+  const recipes = useSelector(selectSelectedIngredientRecipes, shallowEqual);
+  const ingredients = useSelector(selectSelectedIngredients, shallowEqual);
 
   const labels = useMemo(() => ingredients.map(ing => ing.strIngredient), [
     ingredients
   ]);
 
   useEffect(() => {
-    dispatch(loadIngredientsRecipes(labels));
-  }, [dispatch, labels]);
+    if (labels.length === 0) {
+      history.push("/search");
+    } else {
+      dispatch(loadIngredientsRecipes(labels));
+    }
+  }, [dispatch, history, labels]);
+
+  const checkedHandler = useCallback(label => dispatch(toggleChecked(label)), [
+    dispatch
+  ]);
 
   return (
     <IonPage>
@@ -80,19 +93,24 @@ const Results: React.FC = () => {
         <main className={classes.background}>
           <section className={classes.container}>
             <div className={classes.content}>
-              {labels?.map(l => (
-                <IonButton mode="md" color="secondary" key={l}>
+              {labels?.map(label => (
+                <IonButton
+                  key={label}
+                  mode="md"
+                  color="secondary"
+                  onClick={() => checkedHandler(label)}
+                >
                   <IonIcon icon={closeSharp} slot="end" />
-                  {l}
+                  {label}
                 </IonButton>
               ))}
             </div>
           </section>
-
-          {recipes && <ListRecipes recipes={recipes} />}
+          {recipes.length > 0 && <ListRecipes recipes={recipes} />}
         </main>
       </IonContent>
     </IonPage>
   );
 };
+
 export default Results;

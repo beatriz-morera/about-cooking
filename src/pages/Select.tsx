@@ -21,7 +21,8 @@ import { close } from "ionicons/icons";
 import { selectIngredients } from "../store/selectors";
 import {
   loadIngredients,
-  toggleChecked
+  toggleChecked,
+  clearAllChecked
 } from "../store/features/ingredientsSlice";
 
 import classes from "./Select.module.css";
@@ -36,7 +37,12 @@ const Select: React.FC = () => {
   }, [dispatch]);
 
   const checkedHandler = useCallback(
-    ev => dispatch(toggleChecked(ev.detail.value)),
+    ev => dispatch(toggleChecked(ev.target.value)),
+    [dispatch]
+  );
+
+  const clearAllCheckedHandler = useCallback(
+    () => dispatch(clearAllChecked(null)),
     [dispatch]
   );
 
@@ -69,7 +75,7 @@ const Select: React.FC = () => {
                   mode="md"
                   color="secondary"
                   checked={isChecked}
-                  onIonChange={checkedHandler}
+                  onClick={checkedHandler}
                 />
               </IonItem>
             ))}
@@ -78,16 +84,30 @@ const Select: React.FC = () => {
       </IonContent>
       <IonFooter mode="ios">
         <IonToolbar>
-          <Link to="/results" style={{ textDecoration: "none" }}>
-            <IonButton
-              color="secondary"
-              expand="full"
-              shape="round"
-              disabled={!ingredients.some(ing => ing.isChecked)}
-            >
-              Apply
-            </IonButton>
-          </Link>
+          <section className={classes.buttonsContainer}>
+            <div className={classes.button}>
+              <IonButton
+                color="secondary"
+                expand="block"
+                fill="outline"
+                disabled={!ingredients.some(ing => ing.isChecked)}
+                onClick={clearAllCheckedHandler}
+              >
+                Clear all
+              </IonButton>
+            </div>
+            <div className={classes.button}>
+              <Link to="/results" style={{ textDecoration: "none" }}>
+                <IonButton
+                  color="secondary"
+                  expand="block"
+                  disabled={!ingredients.some(ing => ing.isChecked)}
+                >
+                  Apply
+                </IonButton>
+              </Link>
+            </div>
+          </section>
         </IonToolbar>
       </IonFooter>
     </IonPage>

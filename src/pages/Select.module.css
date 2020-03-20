@@ -9,3 +9,11 @@
   font-weight: 600;
   margin-left: 20px;
 }
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+}
+.button {
+  flex: 1;
+  margin: 5px;
+}
