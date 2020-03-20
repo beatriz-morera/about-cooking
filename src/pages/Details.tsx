@@ -28,8 +28,8 @@ const Details: React.FC = () => {
   const recipe = useSelector(selectRecipe);
   const { id } = useParams();
   const activeFavorite = useIsFavorite(recipe);
-
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch<any>(loadRecipe(id));
   }, [dispatch, id]);
@@ -117,7 +117,6 @@ const Details: React.FC = () => {
                   />
                 </IonCard>
               )}
-              {/*<h5 className={classes.label}></h5>*/}
             </section>
           ) : null}
         </main>
