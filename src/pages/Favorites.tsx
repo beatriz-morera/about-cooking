@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import {
@@ -12,14 +13,15 @@ import {
   IonButton,
   IonIcon
 } from "@ionic/react";
+import { searchOutline } from "ionicons/icons";
 
 import { selectFavorites } from "../store/selectors";
 import ListRecipes from "../components/ListRecipes";
 
-import classes from "./Favorites.module.css";
+import LoadImage from "../components/LazyLoadImage";
 import logo from "../assets/icon.png";
-import { searchOutline } from "ionicons/icons";
-import { Link } from "react-router-dom";
+
+import classes from "./Favorites.module.css";
 
 const Favorites: React.FC = () => {
   const favorites = useSelector(selectFavorites);
@@ -44,7 +46,10 @@ const Favorites: React.FC = () => {
           <ListRecipes recipes={favorites} />
         ) : (
           <div className={classes.notFound}>
-            <img src={logo} alt="chef hat" />
+            <div className={classes.image}>
+              <LoadImage src={logo} alt={"chef hat"} />
+            </div>
+
             <h3 className={classes.bolder}>NO RECIPES YET</h3>
             <p>What would you like to cook?</p>
             <Link to="/search">

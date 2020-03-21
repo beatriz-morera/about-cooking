@@ -8,6 +8,7 @@ import { heartOutline, heartSharp } from "ionicons/icons";
 import { toggleFavorite } from "../../store/features/favoritesSlice";
 import { useIsFavorite } from "../../hooks/favorite";
 import { RecipeSummary, Recipe } from "../../models/recipe";
+import LoadImage from "../LazyLoadImage";
 
 import classes from "./MinimalCard.module.css";
 
@@ -30,11 +31,9 @@ const MinimalCard: React.FC<MinimalCardProps> = ({ recipe }) => {
           to={`/search/${recipe.idMeal}`}
           style={{ textDecoration: "none" }}
         >
-          <img
-            src={recipe.strMealThumb}
-            alt={recipe.strMeal}
-            className={classes.image}
-          />
+          <div className={classes.image}>
+            <LoadImage src={recipe.strMealThumb} alt={recipe.strMeal} />
+          </div>
         </Link>
       </div>
       <div className={classes.info}>

@@ -28,11 +28,10 @@
 }
 .imageContainer {
   width: 120px;
-  margin: 0 0 0 3px;
+  height: 90px;
+  margin: 0;
 }
-.image {
-  width: 100%;
-}
+
 .label {
   font-size: 12px;
   font-weight: 600;

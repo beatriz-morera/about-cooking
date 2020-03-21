@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { selectCategories } from "../../store/selectors";
 import { loadCategories } from "../../store/features/categoriesSlice";
+import LoadImage from "../LazyLoadImage";
 
 import classes from "./Categories.module.css";
 
@@ -34,20 +35,15 @@ const Categories: React.FC = () => {
             to={`/category/${c.strCategory}`}
             style={{ textDecoration: "none" }}
           >
-            <div
-              className={classes.card}
-              style={{ background: cardColors[i % cardColors.length] }}
-            >
-              <figure className={classes.imageContainer}>
-                <img
-                  src={c.strCategoryThumb}
-                  className={classes.image}
-                  alt={c.strCategory}
-                />
-                <figcaption className={classes.label}>
-                  {c.strCategory}
-                </figcaption>
-              </figure>
+            <div className={classes.card}>
+              <div style={{ background: cardColors[i % cardColors.length] }}>
+                <figure className={classes.imageContainer}>
+                  <LoadImage src={c.strCategoryThumb} alt={c.strCategory} />
+                  <figcaption className={classes.label}>
+                    {c.strCategory}
+                  </figcaption>
+                </figure>
+              </div>
             </div>
           </Link>
         ))}

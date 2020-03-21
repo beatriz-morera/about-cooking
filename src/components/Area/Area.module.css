@@ -40,6 +40,12 @@
   flex: 0 0 auto;
 }
 
+.image {
+  width: 130px;
+  height: 130px;
+  background-image: url("../../assets/lazy-load-placeholder-small.png");
+}
+
 .name {
   font-size: 12px;
   font-weight: 600;

@@ -7,10 +7,11 @@ import { heartOutline, heartSharp } from "ionicons/icons";
 
 import { toggleFavorite } from "../../store/features/favoritesSlice";
 import tagsHandler from "../../services/stringsFixer";
-
-import classes from "./Card.module.css";
 import { useIsFavorite } from "../../hooks/favorite";
 import { RecipeSummary, Recipe } from "../../models/recipe";
+import LoadImage from "../LazyLoadImage";
+
+import classes from "./Card.module.css";
 
 interface CardProps {
   recipe: RecipeSummary & Partial<Recipe>;
@@ -28,9 +29,10 @@ const Card: React.FC<CardProps> = ({ recipe }) => {
   return (
     <IonCard mode="ios">
       <Link to={`/search/${recipe.idMeal}`}>
-        <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+        <div className={classes.image}>
+          <LoadImage src={recipe.strMealThumb} alt={recipe.strMeal} />
+        </div>
       </Link>
-
       <div className={classes.info}>
         <Link
           to={`/search/${recipe.idMeal}`}

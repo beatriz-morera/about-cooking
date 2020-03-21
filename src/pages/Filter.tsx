@@ -11,12 +11,14 @@ import {
   IonInput
 } from "@ionic/react";
 
-import classes from "./Filter.module.css";
-import logo from "../assets/icon.png";
-
 import { selectRecipes } from "../store/selectors";
 import { loadRecipes } from "../store/features/recipesSlice";
 import ListRecipes from "../components/ListRecipes";
+
+import LoadImage from "../components/LazyLoadImage";
+import logo from "../assets/icon.png";
+
+import classes from "./Filter.module.css";
 
 const Filter: React.FC = () => {
   const [value, setValue] = useState("");
@@ -82,7 +84,9 @@ const Filter: React.FC = () => {
               <ListRecipes recipes={recipes} />
             ) : (
               <div className={classes.notFound}>
-                <img src={logo} alt="chef hat" />
+                <div className={classes.image}>
+                  <LoadImage src={logo} alt={"chef hat"} />
+                </div>
                 <h3 className={classes.bolder}>
                   Didn't find anything for {`"${value}"`}
                 </h3>

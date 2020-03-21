@@ -5,8 +5,10 @@
   align-items: center;
 }
 .image {
-  width: 100%;
-  height: auto;
+  width: 343px;
+  height: 343px;
+  margin: 0;
+  background-image: url("../../assets/lazy-load-placeholder.png");
 }
 
 .info {

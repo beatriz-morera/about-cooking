@@ -7,6 +7,7 @@ import { arrowForwardSharp } from "ionicons/icons";
 import { List } from "../../models/recipe";
 
 import classes from "./Area.module.css";
+import LoadImage from "../LazyLoadImage";
 
 interface AreaProps {
   area: List;
@@ -35,7 +36,9 @@ const Area: React.FC<AreaProps> = ({ area }) => {
               key={recipe.idMeal}
             >
               <div className={classes.card}>
-                <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+                <div className={classes.image}>
+                  <LoadImage src={recipe.strMealThumb} alt={recipe.strMeal} />
+                </div>
                 <h4 className={classes.name}>{recipe.strMeal}</h4>
               </div>
             </Link>
