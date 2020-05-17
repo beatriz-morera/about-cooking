@@ -1,4 +1,4 @@
-# about-cooking
+# About Cooking
 
 Ionic recipe finder PWA Mobile Only
 
