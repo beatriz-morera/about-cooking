@@ -1,6 +1,6 @@
 # about-cooking
 
-Ionic recipe finder app
+Ionic recipe finder PWA Mobile Only
 
 **pages**
 
