@@ -23,6 +23,7 @@ import { useIsFavorite } from "../hooks/favorite";
 import tagsHandler from "../services/stringsFixer";
 
 import classes from "./Details.module.css";
+import LoadImage from "../components/LazyLoadImage";
 
 const Details: React.FC = () => {
   const recipe = useSelector(selectRecipe);
@@ -110,11 +111,9 @@ const Details: React.FC = () => {
               </IonCard>
               {recipe.strYoutube && (
                 <IonCard mode="ios">
-                  <img
-                    className={classes.image}
-                    src={recipe.strMealThumb}
-                    alt={recipe.strMeal}
-                  />
+                  <div className={classes.image}>
+                    <LoadImage src={recipe.strMealThumb} alt={recipe.strMeal} />
+                  </div>
                 </IonCard>
               )}
             </section>
