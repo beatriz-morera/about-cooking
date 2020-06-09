@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 import {
   IonContent,
@@ -9,20 +8,20 @@ import {
   IonPage,
   IonButton,
   IonToolbar,
-  IonIcon
+  IonIcon,
 } from "@ionic/react";
 import { searchOutline, optionsOutline, closeSharp } from "ionicons/icons";
 
 import {
   selectSelectedIngredientRecipes,
-  selectSelectedIngredients
-} from "../store/selectors";
+  selectSelectedIngredients,
+} from "../../store/selectors";
 import {
   loadIngredientsRecipes,
-  toggleChecked
-} from "../store/features/ingredientsSlice";
+  toggleChecked,
+} from "../../store/features/ingredientsSlice";
 
-import ListRecipes from "../components/ListRecipes";
+import ListRecipes from "../../components/ListRecipes";
 
 import classes from "./Results.module.css";
 
@@ -32,8 +31,8 @@ const Results: React.FC = () => {
   const recipes = useSelector(selectSelectedIngredientRecipes, shallowEqual);
   const ingredients = useSelector(selectSelectedIngredients, shallowEqual);
 
-  const labels = useMemo(() => ingredients.map(ing => ing.strIngredient), [
-    ingredients
+  const labels = useMemo(() => ingredients.map((ing) => ing.strIngredient), [
+    ingredients,
   ]);
 
   useEffect(() => {
@@ -44,9 +43,10 @@ const Results: React.FC = () => {
     }
   }, [dispatch, history, labels]);
 
-  const checkedHandler = useCallback(label => dispatch(toggleChecked(label)), [
-    dispatch
-  ]);
+  const checkedHandler = useCallback(
+    (label) => dispatch(toggleChecked(label)),
+    [dispatch]
+  );
 
   return (
     <IonPage>
@@ -66,7 +66,7 @@ const Results: React.FC = () => {
                   borderRadius: "5px",
                   border: "0.5px solid #d1d1d1",
                   padding: "0 20px 0 5px",
-                  flex: 1
+                  flex: 1,
                 }}
               >
                 <IonIcon slot="start" icon={searchOutline} />
@@ -80,7 +80,7 @@ const Results: React.FC = () => {
                 fill="clear"
                 style={{
                   borderRadius: "5px",
-                  border: "0.5px solid #d1d1d1"
+                  border: "0.5px solid #d1d1d1",
                 }}
               >
                 <IonIcon icon={optionsOutline} color="secondary" />
@@ -93,7 +93,7 @@ const Results: React.FC = () => {
         <main className={classes.background}>
           <section className={classes.container}>
             <div className={classes.content}>
-              {labels?.map(label => (
+              {labels?.map((label) => (
                 <IonButton
                   key={label}
                   mode="md"

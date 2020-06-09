@@ -11,15 +11,15 @@ import {
   IonBackButton,
   IonHeader,
   IonButton,
-  IonIcon
+  IonIcon,
 } from "@ionic/react";
 import { searchOutline } from "ionicons/icons";
 
-import { selectFavorites } from "../store/selectors";
-import ListRecipes from "../components/ListRecipes";
+import { selectFavorites } from "../../store/selectors";
+import ListRecipes from "../../components/ListRecipes";
 
-import LoadImage from "../components/LazyLoadImage";
-import logo from "../assets/icon.png";
+import LoadImage from "../../components/LazyLoadImage";
+import logo from "../../assets/icon.png";
 
 import classes from "./Favorites.module.css";
 

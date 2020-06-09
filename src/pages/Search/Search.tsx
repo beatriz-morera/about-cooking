@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -7,19 +8,18 @@ import {
   IonPage,
   IonButton,
   IonIcon,
-  IonToolbar
+  IonToolbar,
 } from "@ionic/react";
 import { searchOutline, optionsOutline } from "ionicons/icons";
 
+import { selectAreas } from "../../store/selectors";
+import { loadAreas } from "../../store/features/areasSlice";
+
+import Categories from "../../components/Categories";
+import Featured from "../../components/Featured/Featured";
+import Area from "../../components/Area";
+
 import classes from "./Search.module.css";
-
-import { selectAreas } from "../store/selectors";
-import { loadAreas } from "../store/features/areasSlice";
-
-import Categories from "../components/Categories";
-import Featured from "../components/Featured/Featured";
-import Area from "../components/Area";
-import { Link } from "react-router-dom";
 
 const Search: React.FC = () => {
   const areas = useSelector(selectAreas);
@@ -47,7 +47,7 @@ const Search: React.FC = () => {
                   borderRadius: "5px",
                   border: "0.5px solid #d1d1d1",
                   padding: "0 20px 0 5px",
-                  flex: 1
+                  flex: 1,
                 }}
               >
                 <IonIcon slot="start" icon={searchOutline} />
@@ -61,7 +61,7 @@ const Search: React.FC = () => {
                 fill="clear"
                 style={{
                   borderRadius: "5px",
-                  border: "0.5px solid #d1d1d1"
+                  border: "0.5px solid #d1d1d1",
                 }}
               >
                 <IonIcon icon={optionsOutline} color="secondary" />
@@ -75,7 +75,7 @@ const Search: React.FC = () => {
           <Categories />
           <h5 className={classes.label}>Featured</h5>
           <Featured />
-          {areas.map(area => (
+          {areas.map((area) => (
             <Area area={area} key={area.name} />
           ))}
         </main>

@@ -5,9 +5,9 @@ import { IonIcon } from "@ionic/react";
 import { arrowForwardSharp } from "ionicons/icons";
 
 import { List } from "../../models/recipe";
+import LoadImage from "../LazyLoadImage";
 
 import classes from "./Area.module.css";
-import LoadImage from "../LazyLoadImage";
 
 interface AreaProps {
   area: List;
@@ -29,7 +29,7 @@ const Area: React.FC<AreaProps> = ({ area }) => {
 
       <section className={classes.container}>
         <div className={classes.content}>
-          {area.recipes.slice(0, 10).map(recipe => (
+          {area.recipes.slice(0, 10).map((recipe) => (
             <Link
               to={`/search/${recipe.idMeal}`}
               style={{ textDecoration: "none" }}

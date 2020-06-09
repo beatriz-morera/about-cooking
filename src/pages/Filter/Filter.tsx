@@ -8,15 +8,15 @@ import {
   IonBackButton,
   IonButtons,
   IonToolbar,
-  IonInput
+  IonInput,
 } from "@ionic/react";
 
-import { selectRecipes } from "../store/selectors";
-import { loadRecipes } from "../store/features/recipesSlice";
-import ListRecipes from "../components/ListRecipes";
+import { selectRecipes } from "../../store/selectors";
+import { loadRecipes } from "../../store/features/recipesSlice";
+import ListRecipes from "../../components/ListRecipes";
 
-import LoadImage from "../components/LazyLoadImage";
-import logo from "../assets/icon.png";
+import LoadImage from "../../components/LazyLoadImage";
+import logo from "../../assets/icon.png";
 
 import classes from "./Filter.module.css";
 
@@ -27,7 +27,7 @@ const Filter: React.FC = () => {
   const dispatch = useDispatch();
 
   const findRecipeHandler = useCallback(
-    ev => {
+    (ev) => {
       const text = ev.target.value;
       const name = text.trim();
       if (name.length > 0) {

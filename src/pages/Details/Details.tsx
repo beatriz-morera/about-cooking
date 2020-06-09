@@ -12,18 +12,19 @@ import {
   IonHeader,
   IonToolbar,
   IonButtons,
-  IonBackButton
+  IonBackButton,
 } from "@ionic/react";
 import { heartOutline, heartSharp } from "ionicons/icons";
 
-import { selectRecipe } from "../store/selectors";
-import { loadRecipe } from "../store/features/recipeSlice";
-import { toggleFavorite } from "../store/features/favoritesSlice";
-import { useIsFavorite } from "../hooks/favorite";
-import tagsHandler from "../services/stringsFixer";
+import { selectRecipe } from "../../store/selectors";
+import { loadRecipe } from "../../store/features/recipeSlice";
+import { toggleFavorite } from "../../store/features/favoritesSlice";
+import { useIsFavorite } from "../../hooks/favorite";
+import tagsHandler from "../../services/stringsFixer";
+
+import LoadImage from "../../components/LazyLoadImage";
 
 import classes from "./Details.module.css";
-import LoadImage from "../components/LazyLoadImage";
 
 const Details: React.FC = () => {
   const recipe = useSelector(selectRecipe);
@@ -93,7 +94,7 @@ const Details: React.FC = () => {
               </div>
               <h5 className={classes.label}>Ingredients</h5>
               <IonCard mode="ios">
-                {recipe.ingredients.map(ingredient => (
+                {recipe.ingredients.map((ingredient) => (
                   <div
                     key={ingredient.name + ingredient.measure}
                     className={classes.ingredients}

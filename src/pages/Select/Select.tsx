@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -14,19 +15,18 @@ import {
   IonItem,
   IonCheckbox,
   IonFooter,
-  IonButton
+  IonButton,
 } from "@ionic/react";
 import { close } from "ionicons/icons";
 
-import { selectIngredients } from "../store/selectors";
+import { selectIngredients } from "../../store/selectors";
 import {
   loadIngredients,
   toggleChecked,
-  clearAllChecked
-} from "../store/features/ingredientsSlice";
+  clearAllChecked,
+} from "../../store/features/ingredientsSlice";
 
 import classes from "./Select.module.css";
-import { Link } from "react-router-dom";
 
 const Select: React.FC = () => {
   const ingredients = useSelector(selectIngredients);
@@ -37,7 +37,7 @@ const Select: React.FC = () => {
   }, [dispatch]);
 
   const checkedHandler = useCallback(
-    ev => dispatch(toggleChecked(ev.target.value)),
+    (ev) => dispatch(toggleChecked(ev.target.value)),
     [dispatch]
   );
 
@@ -90,7 +90,7 @@ const Select: React.FC = () => {
                 color="secondary"
                 expand="block"
                 fill="outline"
-                disabled={!ingredients.some(ing => ing.isChecked)}
+                disabled={!ingredients.some((ing) => ing.isChecked)}
                 onClick={clearAllCheckedHandler}
               >
                 Clear all
@@ -101,7 +101,7 @@ const Select: React.FC = () => {
                 <IonButton
                   color="secondary"
                   expand="block"
-                  disabled={!ingredients.some(ing => ing.isChecked)}
+                  disabled={!ingredients.some((ing) => ing.isChecked)}
                 >
                   Apply
                 </IonButton>
