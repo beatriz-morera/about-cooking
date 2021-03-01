@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+import * as auth from "./features/authSlice";
 import * as categories from "./features/categoriesSlice";
 import * as featured from "./features/featuredSlice";
 import * as recipe from "./features/recipeSlice";
@@ -10,6 +11,7 @@ import * as favorites from "./features/favoritesSlice";
 import * as ingredients from "./features/ingredientsSlice";
 
 export interface State {
+  auth: auth.State;
   categories: categories.State;
   featured: featured.State;
   recipe: recipe.State;
@@ -22,6 +24,7 @@ export interface State {
 
 export default configureStore<State>({
   reducer: {
+    auth: auth.reducer,
     categories: categories.reducer,
     featured: featured.reducer,
     recipe: recipe.reducer,

@@ -1,0 +1,24 @@
+@import "../../theme/variables.css";
+
+.container{
+  padding: 2rem 0;
+}
+
+.container ion-avatar{
+  width: 70px;
+  height: 70px;
+}
+
+.container ion-item h3{
+  font-size: 1.7rem;
+}
+
+
+.recipesContainer{
+  width: 100vw;
+  padding: 1rem 0;
+  overflow: hidden;
+}
+
+
+

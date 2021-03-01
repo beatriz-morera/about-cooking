@@ -12,6 +12,8 @@ import {
 import { IonReactHashRouter } from "@ionic/react-router";
 import { heartOutline, searchSharp } from "ionicons/icons";
 
+import Auth from "./pages/Auth";
+import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import Filter from "./pages/Filter";
 import Select from "./pages/Select";
@@ -19,7 +21,6 @@ import Results from "./pages/Results";
 import ByCategory from "./pages/ByCategory";
 import ByArea from "./pages/ByArea";
 import Details from "./pages/Details";
-import Favorites from "./pages/Favorites";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -45,16 +46,16 @@ const App: React.FC = () => (
     <IonReactHashRouter>
       <IonTabs>
         <IonRouterOutlet>
+          <Route path="/auth" component={Auth} exact />
+          <Route path="/profile" component={Profile} exact/>
           <Route path="/search" component={Search} exact />
-          <Route path="/filter" component={Filter} />
-          <Route path="/select" component={Select} />
-          <Route path="/results" component={Results} />
-          <Route path="/search/:id" component={Details} />
-          <Route path="/category/:id" component={ByCategory} />
-          <Route path="/area/:id" component={ByArea} />
-
-          <Route path="/favorites" component={Favorites} />
-          <Route path="/" render={() => <Redirect to="/search" />} exact />
+          <Route path="/filter" component={Filter} exact/>
+          <Route path="/select" component={Select} exact/>
+          <Route path="/results" component={Results} exact/>
+          <Route path="/search/:id" component={Details} exact/>
+          <Route path="/category/:id" component={ByCategory} exact/>
+          <Route path="/area/:id" component={ByArea} exact/>
+          <Route path="/" render={() => <Redirect to="/auth" />} exact />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="search" href="/search">
@@ -62,10 +63,11 @@ const App: React.FC = () => (
             <IonLabel>Discover</IonLabel>
           </IonTabButton>
 
-          <IonTabButton tab="favorites" href="/favorites">
+          <IonTabButton tab="profile" href="/profile">
             <IonIcon icon={heartOutline} />
-            <IonLabel>Favorites</IonLabel>
+            <IonLabel>My Recipes</IonLabel>
           </IonTabButton>
+
         </IonTabBar>
       </IonTabs>
     </IonReactHashRouter>

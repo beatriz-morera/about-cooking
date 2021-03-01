@@ -1,3 +1,4 @@
+import * as auth from "./features/authSlice";
 import * as categories from "./features/categoriesSlice";
 import * as featured from "./features/featuredSlice";
 import * as recipe from "./features/recipeSlice";
@@ -8,6 +9,8 @@ import * as favorites from "./features/favoritesSlice";
 import * as ingredients from "./features/ingredientsSlice";
 
 import { State } from "./store";
+
+export const selectAuth = (state: State) => auth.selectAuth(state.auth);
 
 export const selectCategories = (state: State) =>
   categories.selectCategories(state.categories);

@@ -3,22 +3,15 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import {
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonContent,
-  IonButtons,
-  IonBackButton,
-  IonHeader,
   IonButton,
   IonIcon,
 } from "@ionic/react";
 import { searchOutline } from "ionicons/icons";
 
 import { selectFavorites } from "../../store/selectors";
-import ListRecipes from "../../components/ListRecipes";
+import ListRecipes from "../ListRecipes";
 
-import LoadImage from "../../components/LazyLoadImage";
+import LoadImage from "../LazyLoadImage";
 import logo from "../../assets/icon.png";
 
 import classes from "./Favorites.module.css";
@@ -27,21 +20,7 @@ const Favorites: React.FC = () => {
   const favorites = useSelector(selectFavorites);
 
   return (
-    <IonPage>
-      <IonHeader mode="ios">
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton
-              defaultHref="/"
-              text=""
-              color="secondary"
-              mode="md"
-            />
-          </IonButtons>
-          <IonTitle>Favorites</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
+      <section>
         {favorites.length ? (
           <ListRecipes recipes={favorites} />
         ) : (
@@ -50,7 +29,7 @@ const Favorites: React.FC = () => {
               <LoadImage src={logo} alt={"chef hat"} />
             </div>
 
-            <h3 className={classes.bolder}>NO RECIPES YET</h3>
+            <h4 className={classes.bolder}>NO RECIPES YET</h4>
             <p>What would you like to cook?</p>
             <Link to="/search">
               <IonButton
@@ -65,8 +44,7 @@ const Favorites: React.FC = () => {
             </Link>
           </div>
         )}
-      </IonContent>
-    </IonPage>
+      </section>
   );
 };
 

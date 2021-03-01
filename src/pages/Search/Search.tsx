@@ -15,6 +15,7 @@ import { searchOutline, optionsOutline } from "ionicons/icons";
 import { selectAreas } from "../../store/selectors";
 import { loadAreas } from "../../store/features/areasSlice";
 
+import Access from "../../components/Access"
 import Categories from "../../components/Categories";
 import Featured from "../../components/Featured/Featured";
 import Area from "../../components/Area";
@@ -30,6 +31,7 @@ const Search: React.FC = () => {
   }, [dispatch]);
 
   return (
+    <Access>
     <IonPage>
       <IonHeader mode="ios">
         <IonToolbar>
@@ -81,6 +83,7 @@ const Search: React.FC = () => {
         </main>
       </IonContent>
     </IonPage>
+    </Access>
   );
 };
 

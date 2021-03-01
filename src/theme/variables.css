@@ -9,6 +9,9 @@ http://ionicframework.com/docs/theming/ */
   .searchbar-input.sc-ion-searchbar-ios {
   padding-inline-start: 40px;
 }
+
+
+
 :root {
   /** primary **/
   --ion-color-primary: #3880ff;

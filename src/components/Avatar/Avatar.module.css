@@ -1,0 +1,12 @@
+.editIcon{
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  right: 1rem;
+  bottom: 0.5rem;
+  background: var(--ion-color-secondary);
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+}
